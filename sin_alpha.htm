@@ -29,16 +29,19 @@
       document.getElementById('pi_result').innerHTML = pi;
       var alpha = document.getElementById('alpha').innerHTML;
       var alpha_iterations = document.getElementById('alpha_iterations').innerHTML;
-      var sin_alpha;
+      var sin_alpha = 0;
       function fact(num) {
         var rval = 1;
-        for (var j = 2; j <= num; j++)
+        for (var j = 2; j <= num; j++) {
           rval = rval * j;
+        }
         return rval;
       }
       for (i = 0; i < alpha_iterations; i++) {
-        actual = 
+        actual = Math.pow(-1, i) * Math.pow(alpha, (2*i+1)) / fact(2*i+1);
+        sin_alpha += actual;
       }
+      document.getElementById('result').innerHTML = sin_alpha;
     }
   </script>
 </body>
