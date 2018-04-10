@@ -33,8 +33,6 @@
         }
       }
       document.getElementById('pi_result').innerHTML = pi;
-      console.log('pi');
-      console.log(pi);
       var alpha = document.getElementById('alpha').value * pi / 180;
       var alpha_iterations = document.getElementById('alpha_iterations').value;
       var sin_alpha = 0;
@@ -53,7 +51,7 @@
         actual = first * second / third;
         sin_alpha += actual;
       }
-      console.log(document.getElementById('result').innerHTML)
+      document.getElementById('result').innerHTML = sin_alpha;
     }
   </script>
 </body>
