@@ -5,30 +5,38 @@
 </head>
 <body>
   <p>π pontossága:</p>
-  <input type="number" min="3" max="1000" id="pi_iterations">
+  <input type="number" id="pi_iterations">
+  <span>(legyen inkább 3,141593) </span><input type="number" id="defined">
   <p>α értéke:</p>
-  <input type="number" min="-1000" max="1000" id="alpha">
+  <input type="number" id="alpha">
   <p>sin(α) pontossága:</p>
-  <input type="number" min="3" max="1000" id="alpha_iterations"> <br>
-  <button onclick="sin()">OK</button> <br>
-  <span>A következő π értékkel számoltam: </span><span id="pi_result" /> <br>
-  <span>sin(α) értéke: </span><span id="result" />
+  <input type="number" id="alpha_iterations"> <br><br>
+  <button onclick="sin()">OK</button> <br><br>
+  <span>A következő π értékkel számoltam: </span><span id="pi_result"></span> <br><br>
+  <span><b>sin(α) értéke: </b></span><span id="result" style="color: red;"></span>
   <script>
     function sin() {
-      var pi_iterations = document.getElementById('pi_iterations').innerHTML;
+      var pi_iterations = document.getElementById('pi_iterations').value;
       var i = -1;
       var actual, pi;
-      while (i <= pi_iterations) {
-        i += 2;
-        actual = 4/i;
-        pi += actual;
-        i += 2;
-        actual = 4/i;
-        pi -= actual;
+      if (document.getElementById('defined').value == 1) {
+        pi = 3.141593;
+      } else {
+        pi = 0;
+        while (i <= pi_iterations) {
+          i += 2;
+          actual = 4/i;
+          pi += actual;
+          i += 2;
+          actual = 4/i;
+          pi -= actual;
+        }
       }
       document.getElementById('pi_result').innerHTML = pi;
-      var alpha = document.getElementById('alpha').innerHTML;
-      var alpha_iterations = document.getElementById('alpha_iterations').innerHTML;
+      console.log('pi');
+      console.log(pi);
+      var alpha = document.getElementById('alpha').value * pi / 180;
+      var alpha_iterations = document.getElementById('alpha_iterations').value;
       var sin_alpha = 0;
       function fact(num) {
         var rval = 1;
@@ -37,11 +45,15 @@
         }
         return rval;
       }
+      var first, second, third;
       for (i = 0; i < alpha_iterations; i++) {
-        actual = Math.pow(-1, i) * Math.pow(alpha, (2*i+1)) / fact(2*i+1);
+        first = Math.pow(-1, i);
+        second = Math.pow(alpha, (2*i+1));
+        third = fact(2*i+1);
+        actual = first * second / third;
         sin_alpha += actual;
       }
-      document.getElementById('result').innerHTML = sin_alpha;
+      console.log(document.getElementById('result').innerHTML)
     }
   </script>
 </body>
