@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>sin(α) Közelítés</title>
+</head>
+<body>
+  <p>π pontossága:</p>
+  <input type="number" min="3" max="1000" id="pi_iterations">
+  <p>α értéke:</p>
+  <input type="number" min="-1000" max="1000" id="alpha">
+  <p>sin(α) pontossága:</p>
+  <input type="number" min="3" max="1000" id="alpha_iterations">
+  <button onclick="sin()">OK</button>
+  <span>A következő π értékkel számoltam: </span><span id="pi_result" />
+  <span>sin(α) értéke: </span><span id="result" />
+  <script>
+    function sin() {
+      var pi_iterations = document.getElementById('pi_iterations').innerHTML;
+      var i = -1;
+      var actual, pi;
+      while (i <= pi_iterations) {
+        i += 2;
+        actual = 4/i;
+        pi += actual;
+        i += 2;
+        actual = 4/i;
+        pi -= actual;
+      }
+      document.getElementById('pi_result').innerHTML = pi;
+      var alpha = document.getElementById('alpha').innerHTML;
+      var alpha_iterations = document.getElementById('alpha_iterations').innerHTML;
+      var sin_alpha;
+      function fact(num) {
+        var rval = 1;
+        for (var j = 2; j <= num; j++)
+          rval = rval * j;
+        return rval;
+      }
+      for (i = 0; i < alpha_iterations; i++) {
+        actual = 
+      }
+    }
+  </script>
+</body>
+</html>
